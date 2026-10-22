@@ -16,10 +16,12 @@ conda activate llama
 cd llama
 python -m pip install -e .
 python -m pip install --upgrade huggingface_hub
+python -m pip install -U "huggingface_hub[cli]"
 
-#hf auth login
+# Do this for authorization to download the model
+# hf auth login  <-- It will provide you the code
   # Open this URL in your browser: https://hf.co/oauth/device
-  # And enter the code: ???   (90NN-85CB)
+  # And enter the code (e.g., 90NN-85CB) to the website above
 
 hf download meta-llama/Llama-2-7b-chat   consolidated.00.pth params.json tokenizer.model   --local-dir llama-2-7b-chat
 python -m pip install   torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1   --index-url https://download.pytorch.org/whl/cu118
