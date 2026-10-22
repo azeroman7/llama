@@ -100,5 +100,14 @@ If a question does not make any sense, or is not factually coherent, explain why
         print("\n==================================\n")
 
 
+#if __name__ == "__main__":
+#    fire.Fire(main)
+
 if __name__ == "__main__":
-    fire.Fire(main)
+    import torch.distributed as dist
+
+    try:
+        fire.Fire(main)
+    finally:
+        if dist.is_initialized():
+            dist.destroy_process_group()
